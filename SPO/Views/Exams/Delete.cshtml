@@ -1,0 +1,50 @@
+﻿@model SPO.Models.Exam
+
+@{
+    ViewBag.Title = "SPO - ToDo Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+        var ExamDate = Model.ExamDate.Day + "." + Model.ExamDate.Month + "." + Model.ExamDate.Year;
+}
+
+<div class="card">
+    <div class="card-header">
+        <h4>Delete this exam</h4>
+    </div>
+    <div class="card-body">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Subject.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Subject.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ExamDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => ExamDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Grade)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Grade)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" />
+            </div>
+        }
+    </div>
+</div>

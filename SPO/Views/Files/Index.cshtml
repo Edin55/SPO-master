@@ -1,0 +1,44 @@
+﻿@model IEnumerable<SPO.Models.File>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<p>
+    @Html.ActionLink("↑ Upload a file", "Upload", null, new { @class = "btn btn-default" })
+</p>
+
+<div class="card">
+    <div class="card-header">
+        <h4>Files overview</h4>
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FileName)
+                </th>
+                <th>
+                    Length
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FileName)
+                    </td>
+                    <td>
+                        @String.Format("{0:0.00}", (float)item.Content.Length / 1024.0) KB
+                    </td>
+                    <td>
+                        @Html.ActionLink("↓ Download", "Download", new { id = item.Id }, new { @class = "btn btn-default" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-default" })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

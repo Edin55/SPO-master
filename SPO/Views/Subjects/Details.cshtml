@@ -1,0 +1,61 @@
+﻿@model SPO.Models.Subject
+
+@{
+    ViewBag.Title = "SPO - Subject Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var Enrolled = Model.Enrolled.Day + "." + Model.Enrolled.Month + "." + Model.Enrolled.Year;
+}
+
+<div class="card">
+    <div class="card-header">
+        <h4>Subject details</h4>
+    </div>
+    <div class="card-body">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Credits)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Credits)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Enrolled)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => Enrolled)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Semester)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Semester)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Professor)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Professor)
+            </dd>
+
+        </dl>
+
+        <p>
+            @Html.ActionLink("Edit this subject", "Edit", new { id = Model.Id }, new { @class = "btn btn-default" })
+        </p>
+    </div>
+</div>

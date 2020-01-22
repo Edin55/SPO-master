@@ -1,0 +1,78 @@
+﻿@using SPO.Utilities
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Css/styles.css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <link href="~/Scripts/styles.css" rel="stylesheet" />
+</head>
+<body>
+
+    <nav class="navbar fixed-top navbar-expand-lg bg-white navbar-light scrolling-navbar nav-bar" style="padding-top: 5px;padding-bottom: 5px;margin-bottom: 0px;">
+        <div class="container-fluid">
+            <span class="pl-3 pr-3"></span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse text-center row" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-flex-icons col-md-7 col-xs-12" style="display:flex;align-items:center">
+                    <li style="margin-right:15px">
+                        @Html.Partial("_BackArrowPartial")
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://github.com/Edin55/SPO" class="nav-link border border-light rounded waves-effect"
+                           target="_blank">
+                            <i class="fab fa-github mr-2"></i>SPO GitHub
+                        </a>
+                    </li>
+                </ul>
+                <div class="col-md-5 col-xs-12">
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div style="height:100%; width:15%; position:fixed !important; top:0;top: 0; right: 0; left: 0; z-index:1050;  -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12); box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12); background-color: #fff;">
+        <a class="" href="@Url.Action("Dashboard", "Students")">
+            <img src="~/Images/LogoSample_ByTailorBrands.jpg" class="img-fluid " alt="">
+        </a>
+        <div class="list-group list-group-flush">
+            <a href="@Url.Action("Dashboard", "Students")" class="@Html.IsActive("Students", "Dashboard") list-group-item list-group-item-action waves-effect">
+                <i class="fa fa-tachometer-alt mr-3"></i>Dashboard
+            </a>
+            <a href="@Url.Action("Profile", "Students")" class="@Html.IsActive("Students", "Profile") list-group-item list-group-item-action waves-effect">
+                <i class="fa fa-user mr-3"></i>Profile
+            </a>
+            <a href="@Url.Action("Index", "Subjects")" class="@Html.IsActive("Subjects") list-group-item list-group-item-action waves-effect">
+                <i class="fa fa-book mr-3"></i>Subjects
+            </a>
+            <a href="@Url.Action("Index", "Exams")" class="@Html.IsActive("Exams") list-group-item list-group-item-action waves-effect">
+                <i class="fa fa-cog mr-3"></i>Exams
+            </a>
+            <a href="@Url.Action("Index", "Files")" class="@Html.IsActive("Files") list-group-item list-group-item-action waves-effect">
+                <i class="fa fa-file mr-3"></i>Files
+            </a>
+            <a href="@Url.Action("Index", "ToDoLists")" class="@Html.IsActive("ToDoLists") list-group-item list-group-item-action waves-effect">
+                <i class="fa fa-clipboard-list mr-3"></i>To Do List
+            </a>
+        </div>
+    </div>
+
+    <div class="container-fluid" style="margin-top:100px">
+        <div class="row">
+            <div class="col-10 offset-2">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+</body>
+</html>

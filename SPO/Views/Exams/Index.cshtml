@@ -1,0 +1,52 @@
+﻿@model IEnumerable<SPO.Models.Exam>
+
+@{
+    ViewBag.Title = "SPO - ToDo Overview";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<p>
+    @Html.ActionLink("Add a new exam", "Create", null, new { @class = "btn btn-default" })
+</p>
+
+<div class="card">
+    <div class="card-header">
+        <h4>Exams overview</h4>
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Subject.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ExamDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Grade)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                var ExamDate = item.ExamDate.Day + "." + item.ExamDate.Month + "." + item.ExamDate.Year;
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Subject.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => ExamDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Grade)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-default" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-default" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

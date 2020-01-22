@@ -1,0 +1,43 @@
+﻿@model SPO.Models.File
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h4>Delete this file</h4>
+    </div>
+    <div class="card-body">
+        <div>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.FileName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.FileName)
+                </dd>
+
+                <dt>
+                    Length
+                </dt>
+
+                <dd>
+                    @String.Format("{0:0.00}", (float)Model.Content.Length / 1024.0) KB
+                </dd>
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-default" />
+                </div>
+            }
+        </div>
+    </div>
+</div>

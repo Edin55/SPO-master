@@ -1,0 +1,30 @@
+﻿@model SPO.Models.File
+
+@{
+    ViewBag.Title = "SPO - Upload File";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="card">
+        <div class="card-header">
+            <h4>Upload a file</h4>
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm("Upload", "Files", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <input type="file" id="Content" name="Content">
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="↑ Upload" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
