@@ -5,12 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <p>
-    @Html.ActionLink("Add a new exam", "Create", null, new { @class = "btn btn-default" })
+    @Html.ActionLink("Add a new exam", "Create", null, new { @class = "btn btn-default btn-outline-primary" })
 </p>
 
 <div class="card">
-    <div class="card-header">
-        <h4>Exams overview</h4>
+    <div class="card-header text-center">
+        <h3>Exams overview</h3>
     </div>
     <div class="card-body">
         <table class="table">
@@ -41,8 +41,8 @@
                         @Html.DisplayFor(modelItem => item.Grade)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-default" })
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-default" })
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-default btn-warning" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-default btn-danger" })
                     </td>
                 </tr>
             }

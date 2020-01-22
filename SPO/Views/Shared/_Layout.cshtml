@@ -5,14 +5,32 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Css/styles.css")
     @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-    <link href="~/Scripts/styles.css" rel="stylesheet" />
+    <style>
+        .form-inline {
+            display: inline-block !important;
+            flex-flow: column;
+            width: 100%;
+            zoom: 1;
+            padding: 10px 30px;
+        }
+
+        .card {
+            border: 1px solid rgba(128, 128, 128, 0.20);
+        }
+
+        h3 {
+            padding-top: 30px;
+            text-align: center;
+        }
+    </style>
+
+
 </head>
 <body>
 
@@ -35,7 +53,7 @@
                         </a>
                     </li>
                 </ul>
-                <div class="col-md-5 col-xs-12">
+                <div class="col-md-5 col-xs-12 text-primary">
                     @Html.Partial("_LoginPartial")
                 </div>
             </div>
@@ -74,5 +92,9 @@
             </div>
         </div>
     </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    
+    @RenderSection("scripts", required: false)
 </body>
 </html>

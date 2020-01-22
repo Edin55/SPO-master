@@ -6,11 +6,16 @@
     <link href="~/Scripts/styles.css" rel="stylesheet" />
 
     <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-12">
             <div class="card card-user">
                 <div class="author" style="margin-top: -25px;">
                     <img class="avatar border-gray" src="~/Images/default-avatar.png" alt="...">
-                    <h5 class="title" style="color:#51cbce">@Model.FirstName @Model.LastName</h5>
+                    <h5 class="title" style="color:#51cbce">
+                        @Model.FirstName @Model.LastName
+                        <br/>
+                        @Model.Index
+                    </h5>
+                    
                 </div>
                 <div class="card-footer">
                     <hr>
@@ -43,10 +48,10 @@
             </div>
 
         </div>
-        <div class="col-md-7">
+        <div class="col-md-12">
             <div class="card card-user">
                 <div class="card-header">
-                    <h5 class="card-title">Edit Profile</h5>
+                    <h2 class="card-title text-primary text-center">Edit Profile</h2>
                 </div>
                 <div class="card-body">
                     @using (Html.BeginForm())

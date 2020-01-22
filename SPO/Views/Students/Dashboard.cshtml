@@ -32,7 +32,9 @@
                 <div class="card-footer ">
                     <hr>
                     <div class="stats">
-                        @Model.Subjects.Count / 40
+                        <h5>
+                            @Model.Subjects.Count / 40
+                        </h5>
                     </div>
                 </div>
             </div>
@@ -59,7 +61,9 @@
                 <div class="card-footer ">
                     <hr>
                     <div class="stats">
-                        @Model.PassedSubjects / @Model.SubjectsNum
+                        <h5>
+                            @Model.PassedSubjectsNum / @Model.SubjectsNum
+                        </h5>
                     </div>
                 </div>
             </div>
@@ -86,7 +90,10 @@
                 <div class="card-footer ">
                     <hr>
                     <div class="stats">
-                        <i class="fa fa-clock-o"></i> Next exam - @NextExam
+                        <p style="font-size: 1.47em; line-height: 1.4em">
+                            Next exam - @NextExam
+
+                        </p>                        
                     </div>
                 </div>
             </div>
@@ -102,7 +109,7 @@
                         </div>
                         <div class="col-7 col-md-8">
                             <div class="numbers">
-                                <p class="card-category">Average</p>
+                                <p class="card-category">Average Grade</p>
                                 <p class="card-title">
                                     @Model.GradeAverage
                                 </p>
@@ -113,9 +120,9 @@
                 <div class="card-footer ">
                     <hr>
                     <div class="stats">
-                        <h4>
+                        <h5>
                             @Model.GradeAverage / 10.0
-                        </h4>
+                        </h5>
                     </div>
                 </div>
             </div>
@@ -123,162 +130,191 @@
     </div>
     <div class="row card">
         <div class="card-header">
-            <h4>Unpassed Subjects</h4>
+            <h3>Unpassed Subjects</h3>
         </div>
-        <div class="card-body">
-            <table class="table">
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.UnpassedSubjects.First().Name)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.UnpassedSubjects.First().Credits)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.UnpassedSubjects.First().Enrolled)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.UnpassedSubjects.First().Semester)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.UnpassedSubjects.First().Professor)
-                    </th>
-                </tr>
+        <div>
+            <table class="display"  id="unpassedSubjects">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UnpassedSubjects.First().Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UnpassedSubjects.First().Credits)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UnpassedSubjects.First().Enrolled)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UnpassedSubjects.First().Semester)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UnpassedSubjects.First().Professor)
+                        </th>
+                    </tr>
+                </thead>
 
-                @foreach (var item in Model.UnpassedSubjects)
-                {
-                    var Enrolled = item.Enrolled.Day + "." + item.Enrolled.Month + "." + item.Enrolled.Year;
+                <tbody>
+                    @foreach (var item in Model.UnpassedSubjects)
+                    {
+                        var Enrolled = item.Enrolled.Day + "." + item.Enrolled.Month + "." + item.Enrolled.Year;
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Credits)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Enrolled)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Semester)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Professor)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div class="row card">
+        <div class="card-header">
+            <h3 class="text-center" >Unpassed Exams</h3>
+         </div>
+       
+        <div class="card-body container">
+            <table class="table table-striped table-bordered" id="unpassedExams">
+                <thead>
                     <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Credits)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => Enrolled)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Semester)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Professor)
-                        </td>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UnpassedExams.First().Subject.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UnpassedExams.First().ExamDate)
+                        </th>
                     </tr>
-                }
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.UnpassedExams)
+                    {
+                        var ExamDate = item.ExamDate.Day + "." + item.ExamDate.Month + "." + item.ExamDate.Year;
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Subject.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => ExamDate)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
             </table>
         </div>
     </div>
     <div class="row card">
         <div class="card-header">
-            <h4>Unpassed Exams</h4>
+            <h3>Passed Subjects</h3>
         </div>
-        <div class="card-body">
-            <table class="table">
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.UnpassedExams.First().Subject.Name)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.UnpassedExams.First().ExamDate)
-                    </th>
-                </tr>
-                @foreach (var item in Model.UnpassedExams)
-                {
-                    var ExamDate = item.ExamDate.Day + "." + item.ExamDate.Month + "." + item.ExamDate.Year;
+        <div class="card-body container" >
+            <table class="table" id="passedSubjects">
+                <thead>
                     <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Subject.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => ExamDate)
-                        </td>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PassedSubjects.First().Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PassedSubjects.First().Credits)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PassedSubjects.First().Enrolled)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PassedSubjects.First().Semester)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PassedSubjects.First().Professor)
+                        </th>
                     </tr>
-                }
-            </table>
-        </div>
-    </div>
-    <div class="row card">
-        <div class="card-header">
-            <h4>Passed Subjects</h4>
-        </div>
-        <div class="card-body">
-            <table class="table">
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PassedSubjects.First().Name)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PassedSubjects.First().Credits)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PassedSubjects.First().Enrolled)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PassedSubjects.First().Semester)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PassedSubjects.First().Professor)
-                    </th>
-                </tr>
 
-                @foreach (var item in Model.PassedSubjects)
-                {
-                    var Enrolled = item.Enrolled.Day + "." + item.Enrolled.Month + "." + item.Enrolled.Year;
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Credits)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => Enrolled)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Semester)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Professor)
-                        </td>
-                    </tr>
-                }
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.PassedSubjects)
+                    {
+                        var Enrolled = item.Enrolled.Day + "." + item.Enrolled.Month + "." + item.Enrolled.Year;
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Credits)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Enrolled)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Semester)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Professor)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
             </table>
         </div>
     </div>
     <div class="row card">
         <div class="card-header">
-            <h4>Passed Exams</h4>
+            <h3>Passed Exams</h3>
         </div>
-        <div class="card-body">
-            <table class="table">
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PassedExams.First().Subject.Name)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PassedExams.First().ExamDate)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PassedExams.First().Grade)
-                    </th>
-                </tr>
-                @foreach (var item in Model.PassedExams)
-                {
-                    var ExamDate = item.ExamDate.Day + "." + item.ExamDate.Month + "." + item.ExamDate.Year;
+        <div class="card-body container">
+            <table class="table" id="passedExams">
+                <thead>
                     <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Subject.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => ExamDate)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Grade)
-                        </td>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PassedExams.First().Subject.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PassedExams.First().ExamDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PassedExams.First().Grade)
+                        </th>
                     </tr>
-                }
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.PassedExams)
+                    {
+                        var ExamDate = item.ExamDate.Day + "." + item.ExamDate.Month + "." + item.ExamDate.Year;
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Subject.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => ExamDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Grade)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
             </table>
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        $("document").ready(function () {
+            $("#unpassedSubjects").DataTable();
+            $("#unpassedExams").DataTable();
+            $("#passedSubjects").DataTable();
+            $("#passedExams").DataTable();
+        })
+    </script>
+}

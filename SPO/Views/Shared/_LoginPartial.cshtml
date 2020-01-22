@@ -12,10 +12,11 @@
             <div class="col-sm-7 col-xs-12 pl-0 ml-0" style="display:flex">
                 <img src="~/Images/default-avatar.png" style="width: 50px; height: 50px">
                 
-                <span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:auto">@Html.ActionLink($"{User.Identity.Name}", "Dashboard")</span>
+                <span class="text-primary" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:auto">@Html.ActionLink($"{User.Identity.Name}", "Dashboard")</span>
             </div>
             <div class="col-sm-2 col-xs-12 p-0 m-0">
-                <span class="btn btn-sm btn-outline-danger"><a href="javascript:document.getElementById('logoutForm').submit()">Logout</a></span>
+          
+                <span class="btn btn-sm btn-outline-info"><a href="javascript:document.getElementById('logoutForm').submit()">Logout</a></span>
             </div>
         </div>
 

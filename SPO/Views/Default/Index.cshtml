@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<table id="clientsTable">
+    <thead>
+        <tr>
+            <th> Hello </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @ViewBag.Title
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+@section scripts{
+    <script>
+        $("#clientsTable").DataTable();
+    </script>
+}
+

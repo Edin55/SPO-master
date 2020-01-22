@@ -18,6 +18,7 @@ namespace SPO
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Students", action = "Dashboard", id = UrlParameter.Optional }
             );
+           
         }
     }
 }

@@ -5,12 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <p>
-    @Html.ActionLink("↑ Upload a file", "Upload", null, new { @class = "btn btn-default" })
+    @Html.ActionLink("↑ Upload a file", "Upload", null, new { @class = "btn btn-default btn-outline-primary" })
 </p>
 
 <div class="card">
     <div class="card-header">
-        <h4>Files overview</h4>
+        <h3>Files overview</h3>
     </div>
     <div class="card-body">
         <table class="table">
@@ -34,8 +34,8 @@
                         @String.Format("{0:0.00}", (float)item.Content.Length / 1024.0) KB
                     </td>
                     <td>
-                        @Html.ActionLink("↓ Download", "Download", new { id = item.Id }, new { @class = "btn btn-default" })
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-default" })
+                        @Html.ActionLink("↓ Download", "Download", new { id = item.Id }, new { @class = "btn btn-default btn-success" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-default btn-danger" })
                     </td>
                 </tr>
             }
